@@ -1,5 +1,28 @@
 # SoundCloud API
+ the fast SoundCloud API with [API-Monster](https://github.com/ReactMVC/API-Monster) and [SoundCloudPHP](https://github.com/Hossein-Pira/SoundCloud)
+## Usage
+step 1
+```
+git clone https://github.com/ReactMVC/SoundCloud-API.git
+```
+step 2
+```
+cd SoundCloud-API
+```
+step 3
+```
+composer install
+```
+step 4
+```
+edit APP_URL in .env
+```
+step 5
+```
+php -S localhost:8000
+```
 
+# Framework Documentation:
 <p align="center">
   <img src="https://raw.githubusercontent.com/ReactMVC/image-storage/main/API%20Monster(1).png" alt="Logo" width="270" height="270">
 </p>
