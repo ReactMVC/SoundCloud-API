@@ -15,15 +15,18 @@ use Monster\App\Route;
 
 Route::group('/api', function () {
 
+    // Home
     Route::get('', 'Welcome@index');
     Route::post('', 'Welcome@index');
 
     // GET
     Route::get('/download', 'SoundController@download');
     Route::get('/get', 'SoundController@get');
+    Route::get('/search', 'SoundController@search');
 
     // POST
     Route::post('/download', 'SoundController@downloadPOST');
     Route::post('/get', 'SoundController@getPOST');
+    Route::post('/search', 'SoundController@searchPOST');
 
 });
