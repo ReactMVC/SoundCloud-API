@@ -121,4 +121,58 @@ class SoundController
         }
     }
 
+
+    public function search()
+    {
+        $json = new Json();
+        $cors = new CORS();
+        $cors->origin(['*'])
+            ->methods(['GET', 'POST'])
+            ->headers(['Content-Type', 'Authorization'])
+            ->maxAge(0)
+            ->credentials(false)
+            ->setHeaders();
+
+        if (!isset($_GET['text'])) {
+            http_response_code(400);
+            $json->clean(['status' => false, 'code' => 400, 'message' => 'Please enter the text parameter.']);
+        } else {
+            $text = $_GET['text'];
+            $soundcloud = new SoundCloud();
+            $get = $soundcloud->searchMusic($text);
+            if ($get) {
+                $json->clean($get);
+            } else {
+                http_response_code(403);
+                $json->clean(['status' => false, 'code' => 403, 'message' => 'Error in get list.']);
+            }
+        }
+    }
+
+    public function searchPOST()
+    {
+        $json = new Json();
+        $cors = new CORS();
+        $cors->origin(['*'])
+            ->methods(['GET', 'POST'])
+            ->headers(['Content-Type', 'Authorization'])
+            ->maxAge(0)
+            ->credentials(false)
+            ->setHeaders();
+
+        if (!isset($_POST['text'])) {
+            http_response_code(400);
+            $json->clean(['status' => false, 'code' => 400, 'message' => 'Please enter the text parameter.']);
+        } else {
+            $text = $_POST['text'];
+            $soundcloud = new SoundCloud();
+            $get = $soundcloud->searchMusic($text);
+            if ($get) {
+                $json->clean($get);
+            } else {
+                http_response_code(403);
+                $json->clean(['status' => false, 'code' => 403, 'message' => 'Error in get list.']);
+            }
+        }
+    }
 }
